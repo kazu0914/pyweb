@@ -1,0 +1,66 @@
+{
+  "name": "python-web-runner",
+  "version": "1.0.0",
+  "description": "A web-based Python code execution environment using Pyodide",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build process required for static site'",
+    "start": "npx serve .",
+    "preview": "npx serve .",
+    "lint": "npx eslint script.js",
+    "lint:fix": "npx eslint script.js --fix",
+    "format": "npx prettier --write *.{html,css,js,json,md}",
+    "validate": "npx html-validate index.html",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "python",
+    "web",
+    "browser",
+    "pyodide",
+    "code-editor",
+    "javascript",
+    "webassembly",
+    "online-ide",
+    "python-runner",
+    "data-science"
+  ],
+  "author": {
+    "name": "Python Web Runner Team",
+    "email": "contact@pythonwebrunner.com",
+    "url": "https://pythonwebrunner.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/python-web-runner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/python-web-runner/issues"
+  },
+  "homepage": "https://python-web-runner.vercel.app",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "html-validate": "^8.7.4",
+    "serve": "^14.2.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "files": [
+    "index.html",
+    "styles.css",
+    "script.js",
+    "vercel.json",
+    "README.md"
+  ]
+}

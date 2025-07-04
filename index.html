@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ブラウザ上でPythonコードを実行できるWebアプリケーション">
+    <meta name="keywords" content="Python, Web, Browser, Pyodide, Code Editor">
+    <meta name="author" content="Python Web Runner">
+    
+    <title>Python Web Runner - ブラウザでPython実行</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐍</text></svg>">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Pyodide CDN -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🐍 Python Web Runner</h1>
+        </header>
+        
+        <!-- Main Content -->
+        <main>
+            <!-- Code Editor Section -->
+            <section class="editor-section">
+                <label class="editor-label" for="code-editor">
+                    Pythonコードを入力してください:
+                </label>
+                <textarea 
+                    id="code-editor" 
+                    placeholder="print('Hello, World!')
+import math
+print(f'円周率: {math.pi}')
+
+# NumPyなどのパッケージも自動インストール
+import numpy as np
+print(f'NumPy配列: {np.array([1, 2, 3])}')
+
+# シンプルなHTML文書を作成（Wordで開ける）
+title = 'Python Web Runnerで作成した文書'
+paragraphs = [
+    'この文書はブラウザ上のPythonで作成されました。',
+    '段落を追加することも簡単です。',
+    f'数値計算の結果: {math.pi}',
+    f'配列の合計: {sum(np.array([1, 2, 3]))}'
+]
+
+# HTML文書を作成
+create_simple_document('sample.html', title, paragraphs)
+
+# テキストファイルも作成可能
+text_content = f'''{title}
+
+{chr(10).join(paragraphs)}
+'''
+save_file('sample.txt', text_content)"
+                    aria-label="Python code editor"
+                    spellcheck="false"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                ></textarea>
+            </section>
+            
+            <!-- Controls Section -->
+            <section class="controls">
+                <button 
+                    id="run-button" 
+                    type="button"
+                    disabled
+                    aria-label="Execute Python code"
+                >
+                    実行
+                </button>
+            </section>
+            
+            <!-- Output Section -->
+            <section class="output-section">
+                <label class="output-label" for="output">
+                    実行結果:
+                </label>
+                <div 
+                    id="output" 
+                    role="log" 
+                    aria-live="polite"
+                    aria-label="Python code execution output"
+                >
+                    実行環境を初期化中...
+                </div>
+            </section>
+            
+            <!-- Download Area -->
+            <section id="download-area" aria-label="Download created files"></section>
+            
+            <!-- Library Information -->
+            <section class="info-section" aria-labelledby="library-info-title">
+                <h3 id="library-info-title">📚 利用可能なライブラリ</h3>
+                <div class="library-list">
+                    <p>
+                        <strong>✅ 利用可能:</strong> 
+                        <span class="available-libraries">
+                            numpy, pandas, matplotlib, scipy, requests, sympy, networkx, pillow, beautifulsoup4, lxml
+                        </span>
+                    </p>
+                    <p>
+                        <strong>❌ 利用不可:</strong> 
+                        <span class="unavailable-libraries">
+                            tensorflow, pytorch, opencv-python, python-docx, openpyxl, psycopg2, mysql-connector, sqlite3（一部機能制限）, tkinter, threading（制限あり）, multiprocessing, subprocess, os.system
+                        </span>
+                    </p>
+                    <p>
+                        <small>
+                            ※ ブラウザ環境のため、システム操作、マルチプロセス、GUIライブラリ、重いML/DLライブラリは制限があります
+                        </small>
+                    </p>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer>
+            <p>
+                <small>
+                    Powered by <a href="https://pyodide.org/" target="_blank" rel="noopener noreferrer">Pyodide</a> |
+                    <kbd>Ctrl</kbd> + <kbd>Enter</kbd> で実行
+                </small>
+            </p>
+        </footer>
+    </div>
+    
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

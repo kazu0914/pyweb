@@ -1,18 +1,6 @@
 {
-  "version": 2,
-  "name": "python-web-runner",
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
+  "buildCommand": "echo 'No build needed for static site'",
+  "outputDirectory": ".",
   "headers": [
     {
       "source": "/(.*)",
@@ -24,49 +12,8 @@
         {
           "key": "Cross-Origin-Opener-Policy",
           "value": "same-origin"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
-      ]
-    },
-    {
-      "source": "/(.*\\.(js|css|wasm|data))",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/index.html",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }
-  ],
-  "functions": {
-    "app/api/**/*.js": {
-      "maxDuration": 10
-    }
-  },
-  "regions": ["iad1"],
-  "trailingSlash": false
+  ]
 }
